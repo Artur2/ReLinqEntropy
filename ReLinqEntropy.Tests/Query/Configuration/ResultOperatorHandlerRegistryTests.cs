@@ -27,6 +27,14 @@ namespace ReLinqEntropy.Tests.Query.Configuration
             Assert.NotNull(item);
         }
 
+        [Fact]
+        public void RegisterForTypes_With_Null_Argument_Should_Throw_Exception()
+        {
+            var registry = new ResultOperatorHandlerRegistry();
+
+            Assert.Throws<ArgumentNullException>(() => registry.RegisterForTypes(null));
+        }
+
         public class ResultHandlerStub : IResultOperatorHandler
         {
             public Type SupportedResultOperatorType => throw new NotImplementedException();

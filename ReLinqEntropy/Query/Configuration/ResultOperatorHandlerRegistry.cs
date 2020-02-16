@@ -28,7 +28,16 @@ namespace ReLinqEntropy.Query.Configuration
 
         internal protected override void RegisterForTypes(IEnumerable<Type> itemTypes)
         {
-            throw new NotImplementedException();
+            if (itemTypes == null)
+            {
+                throw new ArgumentNullException(nameof(itemTypes));
+            }
+
+            foreach (var handlerType in itemTypes)
+            {
+                var handler = (IResultOperatorHandler)Activator.CreateInstance(handlerType);
+                Register(handler.SupportedResultOperatorType, handler);
+            }
         }
     }
 }
