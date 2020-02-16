@@ -66,6 +66,6 @@ namespace ReLinqEntropy.Query.Configuration
             return item;
         }
 
-        protected abstract void RegisterForTypes(IEnumerable<Type> itemTypes);
+        internal protected abstract void RegisterForTypes(IEnumerable<Type> itemTypes);
     }
 }

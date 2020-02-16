@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ReLinqEntropy.Query.Operator;
 
 namespace ReLinqEntropy.Query.Configuration
@@ -9,10 +8,25 @@ namespace ReLinqEntropy.Query.Configuration
     {
         public override IResultOperatorHandler GetItem(Type key)
         {
-            throw new NotImplementedException();
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
+            }
+
+
+            IResultOperatorHandler handler;
+
+            var currentType = key;
+            do
+            {
+                handler = GetItemExact(currentType);
+                currentType = currentType.BaseType;
+            } while (handler == null && currentType != null);
+
+            return handler;
         }
 
-        protected override void RegisterForTypes(IEnumerable<Type> itemTypes)
+        internal protected override void RegisterForTypes(IEnumerable<Type> itemTypes)
         {
             throw new NotImplementedException();
         }
