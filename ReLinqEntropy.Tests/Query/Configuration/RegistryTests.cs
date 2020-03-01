@@ -14,7 +14,7 @@ namespace ReLinqEntropy.Tests.Query.Configuration
         public void Register_With_Null_Arguments_Should_Throw_Argument_Null_Exception(string key, string item)
         {
             var stub = new RegistryStub();
-
+            
             Assert.Throws<ArgumentNullException>(() => stub.Register(key, item));
         }
 
@@ -24,7 +24,7 @@ namespace ReLinqEntropy.Tests.Query.Configuration
         public void Register_With_Arguments_Should_Add_To_Collection(string key, string item)
         {
             var stub = new RegistryStub();
-
+            
             stub.Register(key, item);
 
             Assert.Contains(key, stub._items.Keys);
