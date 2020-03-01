@@ -13,8 +13,7 @@ namespace ReLinqEntropy.Query.Mapping
         {
             throw new NotImplementedException();
         }
-
-        public Type ItemType { get; }
+        
         public IResolvedTableInfo GetResolvedTableInfo()
         {
             throw new NotImplementedException();
