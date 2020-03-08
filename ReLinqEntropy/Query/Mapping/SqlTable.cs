@@ -17,8 +17,10 @@ namespace ReLinqEntropy.Query.Mapping
             _itemType = itemType;
             _joinSemantics = joinSemantics;
         }
+        
+        public abstract IResolvedTableInfo GetResolvedTableInfo ();
 
-        public abstract void Accept(ISqlTableBaseVisitor visitor);
+        public abstract void Accept(ISqlTableVisitor visitor);
 
         public Type ItemType => _itemType;
 

@@ -55,7 +55,12 @@ namespace ReLinqEntropy.Tests.Query.Mapping
             {
             }
 
-            public override void Accept(ISqlTableBaseVisitor visitor)
+            public override IResolvedTableInfo GetResolvedTableInfo()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void Accept(ISqlTableVisitor visitor)
             {
                 throw new NotImplementedException();
             }

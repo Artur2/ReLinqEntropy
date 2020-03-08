@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping.Statements;
 using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
-    public class ResolvedSimpleTableInfo : IResolvedTableInfo
+    public class ResolvedSubStatementTableInfo : IResolvedTableInfo
     {
         private readonly Type _itemType;
-        private readonly string _tableName;
         private readonly string _tableAlias;
-
-        public ResolvedSimpleTableInfo(Type itemType, string tableName, string tableAlias)
+        private readonly SqlStatement _sqlStatement;
+        
+        public ResolvedSubStatementTableInfo(string tableAlias, SqlStatement sqlStatement)
         {
-            _itemType = itemType;
-            _tableName = tableName;
             _tableAlias = tableAlias;
         }
 
+        public SqlStatement SqlStatement => _sqlStatement;
+
         public Type ItemType => _itemType;
+        
+        public string TableAlias => _tableAlias;
         
         public IResolvedTableInfo GetResolvedTableInfo() => this;
 
         public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)
         {
-            throw new NotImplementedException();
+            return tableInfoVisitor.VisitSubStatementTableInfo(this);
         }
-
-        public string TableAlias => _tableAlias;
 
         public Expression ResolveReference(SqlTable sqlTable, IMappingResolver mappingResolver,
             IMappingResolutionContext mappingResolutionContext, UniqueIdentifierGenerator uniqueIdentifierGenerator)
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString() => $"({SqlStatement}) [{TableAlias}]";
     }
 }

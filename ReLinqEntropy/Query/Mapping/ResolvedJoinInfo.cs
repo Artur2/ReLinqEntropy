@@ -14,13 +14,19 @@ namespace ReLinqEntropy.Query.Mapping
             _joinCondition = joinCondition;
         }
 
+        public IResolvedTableInfo ForeignTableInfo => _foreignTableInfo;
+
+        public Expression JoinCondition => _joinCondition;
+
         public Type ItemType => _foreignTableInfo.ItemType;
-        
+
         public IJoinInfo Accept(IJoinInfoVisitor joinInfoVisitor)
         {
             throw new NotImplementedException();
         }
 
         public ResolvedJoinInfo GetResolvedJoinInfo() => this;
+
+        public override string ToString() => $"{ForeignTableInfo} ON {JoinCondition}";
     }
 }

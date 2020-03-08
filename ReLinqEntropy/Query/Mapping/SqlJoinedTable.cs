@@ -1,27 +1,50 @@
 ﻿using System;
+using System.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
     public class SqlJoinedTable : SqlTable, ITableInfo
     {
-        public SqlJoinedTable(IJoinInfo joinInfo, JoinSemantics joinSemantics) :base(joinInfo.ItemType, joinSemantics)
+        private IJoinInfo _joinInfo;
+
+        public SqlJoinedTable(IJoinInfo joinInfo, JoinSemantics joinSemantics) : base(joinInfo.ItemType, joinSemantics)
         {
-            
+            _joinInfo = joinInfo;
         }
 
-        public override void Accept(ISqlTableBaseVisitor visitor)
+        public IJoinInfo JoinInfo
         {
-            throw new NotImplementedException();
+            get => _joinInfo;
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
+
+                if (_joinInfo?.ItemType != value.ItemType)
+                {
+                    throw new InvalidOperationException(ExceptionMessageConstants.WrongJoinType);
+                }
+
+                _joinInfo = value;
+            }
         }
-        
-        public IResolvedTableInfo GetResolvedTableInfo()
+
+        public override void Accept(ISqlTableVisitor visitor)
         {
-            throw new NotImplementedException();
+            visitor.VisitSqlJoinedTable(this);
         }
+
+        public override IResolvedTableInfo GetResolvedTableInfo() => JoinInfo.GetResolvedJoinInfo().ForeignTableInfo;
 
         public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)
         {
-            throw new NotImplementedException();
+            return tableInfoVisitor.VisitSqlJoinedTable(this);
         }
+
+        public override string ToString() =>
+
+        JoinSemantics.ToString ().ToUpper () + " JOIN " + JoinInfo + JoinedTables.Aggregate ("", (s, t) => s + " " + t);
     }
 }

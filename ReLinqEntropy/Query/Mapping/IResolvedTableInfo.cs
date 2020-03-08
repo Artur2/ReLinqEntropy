@@ -3,7 +3,7 @@ using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
-    public interface IResolvedTableInfo : IJoinInfo
+    public interface IResolvedTableInfo : ITableInfo
     {
         string TableAlias { get; }
 
