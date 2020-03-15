@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Internal;
 using ReLinqEntropy.Query.Expressions;
 using Remotion.Linq.Clauses;
 using Remotion.Linq.Clauses.StreamedData;
@@ -102,7 +103,18 @@ namespace ReLinqEntropy.Query.Mapping.Statements
 
         public override int GetHashCode ()
         {
-            throw new NotImplementedException();
+            return EqualityUtility.GetRotatedHashCode(
+                       _dataInfo,
+                       _selectProjection,
+                       _whereCondition,
+                       _topExpression,
+                       _isDistinctQuery,
+                       _rowNumberSelector,
+                       _currentRowNumberOffset,
+                       _groupByExpression)
+                   ^ EqualityUtility.GetRotatedHashCode(_sqlTables)
+                   ^ EqualityUtility.GetRotatedHashCode(_orderings)
+                   ^ EqualityUtility.GetRotatedHashCode(_setOperationCombinedStatements);
         }
 
         public override string ToString ()
