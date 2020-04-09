@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ReLinqEntropy.Query.Mapping.Visitors;
+using System;
 using System.Linq.Expressions;
-using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -29,7 +29,7 @@ namespace ReLinqEntropy.Query.Mapping
 
         public bool IsPrimaryKey => _isPrimaryKey;
 
-        public abstract SqlColumnExpression Update(Type type, string owningTableAlias, string columnName,
+        public abstract SqlColumnExpression Update(Type type, string tableAlias, string columnName,
             bool isPrimaryKey);
 
         protected override Expression VisitChildren(ExpressionVisitor visitor)

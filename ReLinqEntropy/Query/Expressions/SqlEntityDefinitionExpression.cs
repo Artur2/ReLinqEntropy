@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ReLinqEntropy.Query.Mapping;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
-using ReLinqEntropy.Query.Mapping;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -22,7 +21,7 @@ namespace ReLinqEntropy.Query.Expressions
             _columns = Array.AsReadOnly(projectionColumns);
         }
 
-        public ReadOnlyCollection<SqlColumnExpression> Columns => _columns;
+        public override ReadOnlyCollection<SqlColumnExpression> Columns => _columns;
 
         public override SqlColumnExpression GetColumn(Type type, string columnName, bool isPrimaryKeyColumn)
             => new SqlColumnDefinitionExpression(type, TableAlias, columnName, isPrimaryKeyColumn);

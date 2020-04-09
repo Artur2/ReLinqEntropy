@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ReLinqEntropy.Query.Operator;
+using System;
 using System.Collections.Generic;
-using ReLinqEntropy.Query.Operator;
 
 namespace ReLinqEntropy.Query.Configuration
 {
@@ -26,7 +26,7 @@ namespace ReLinqEntropy.Query.Configuration
             return handler;
         }
 
-        internal protected override void RegisterForTypes(IEnumerable<Type> itemTypes)
+        protected internal override void RegisterForTypes(IEnumerable<Type> itemTypes)
         {
             if (itemTypes == null)
             {

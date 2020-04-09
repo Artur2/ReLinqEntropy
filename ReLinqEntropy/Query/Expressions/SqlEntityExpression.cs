@@ -1,7 +1,8 @@
-﻿using System;
-using System.Linq.Expressions;
-using ReLinqEntropy.Query.Mapping;
+﻿using ReLinqEntropy.Query.Mapping;
 using ReLinqEntropy.Query.Mapping.Visitors;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -23,24 +24,28 @@ namespace ReLinqEntropy.Query.Expressions
             _name = name;
         }
 
-        public Type Type => _entityType;
+        public abstract ReadOnlyCollection<SqlColumnExpression> Columns { get; }
+
+        public override ExpressionType NodeType => ExpressionType.Extension;
+
+        public override Type Type => _entityType;
 
         public string TableAlias => _tableAlias;
 
         public string Name => _name;
 
         public Func<SqlEntityExpression, Expression> IdentityExpressionGenerator => _identityExpressionGenerator;
-        
-        public abstract SqlColumnExpression GetColumn (Type type, string columnName, bool isPrimaryKeyColumn);
-        
-        public abstract SqlEntityExpression CreateReference (string newTableAlias, Type newType);
-        
+
+        public abstract SqlColumnExpression GetColumn(Type type, string columnName, bool isPrimaryKeyColumn);
+
+        public abstract SqlEntityExpression CreateReference(string newTableAlias, Type newType);
+
         // TODO: Need remove ItemType parameter
-        public abstract SqlEntityExpression Update (Type itemType, string tableAlias, string entityName);
-        
+        public abstract SqlEntityExpression Update(Type itemType, string tableAlias, string entityName);
+
         public Expression GetIdentityExpression()
         {
-            return _identityExpressionGenerator (this);
+            return _identityExpressionGenerator(this);
         }
 
         protected override Expression Accept(ExpressionVisitor visitor)
@@ -49,7 +54,7 @@ namespace ReLinqEntropy.Query.Expressions
             {
                 return resolvedSqlExpressionVisitor.VisitSqlEntity(this);
             }
-            
+
             return base.Accept(visitor);
         }
     }

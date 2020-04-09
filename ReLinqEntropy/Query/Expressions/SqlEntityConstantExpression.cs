@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ReLinqEntropy.Query.Mapping.Visitors;
+using System;
 using System.Linq.Expressions;
-using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -42,13 +42,10 @@ namespace ReLinqEntropy.Query.Expressions
             {
                 return specificVisitor.VisitSqlEntityConstant(this);
             }
-            
+
             return base.Accept(visitor);
         }
 
-        public override string ToString()
-        {
-            return $"Entity({_identityExpression})";
-        }
+        public override string ToString() => $"Entity({_identityExpression})";
     }
 }

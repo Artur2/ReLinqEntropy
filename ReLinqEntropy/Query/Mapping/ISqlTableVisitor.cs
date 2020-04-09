@@ -2,7 +2,7 @@
 {
     public interface ISqlTableVisitor
     {
-        void VisitSqlTable (SqlTableConcrete sqlTable);
-        void VisitSqlJoinedTable (SqlJoinedTable joinedTable);
+        void VisitSqlTable(SqlTableConcrete sqlTable);
+        void VisitSqlJoinedTable(SqlJoinedTable joinedTable);
     }
 }

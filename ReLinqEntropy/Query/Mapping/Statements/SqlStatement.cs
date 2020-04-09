@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using ReLinqEntropy.Internal;
+﻿using ReLinqEntropy.Internal;
 using ReLinqEntropy.Query.Expressions;
 using Remotion.Linq.Clauses;
 using Remotion.Linq.Clauses.StreamedData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace ReLinqEntropy.Query.Mapping.Statements
 {
@@ -79,14 +79,14 @@ namespace ReLinqEntropy.Query.Mapping.Statements
         public Expression CreateExpression() => SqlTables.Count == 0 && !IsDistinctQuery
             ? SelectProjection
             : new SqlSubStatementExpression(this);
-        
-        public override bool Equals (object obj)
+
+        public override bool Equals(object obj)
         {
             var statement = obj as SqlStatement;
             if (statement == null)
                 return false;
 
-            return (_dataInfo.Equals (statement._dataInfo))
+            return (_dataInfo.Equals(statement._dataInfo))
                    && (_selectProjection == statement._selectProjection)
                    && (_whereCondition == statement._whereCondition)
                    && (_topExpression == statement._topExpression)
@@ -96,12 +96,12 @@ namespace ReLinqEntropy.Query.Mapping.Statements
                    && (_groupByExpression == statement._groupByExpression)
                    // Note: These items are all compared by reference, which is okay because the visitors take care to reuse the objects if their contents
                    // don't change.
-                   && (_sqlTables.SequenceEqual (statement._sqlTables))
-                   && (_orderings.SequenceEqual (statement._orderings))
+                   && (_sqlTables.SequenceEqual(statement._sqlTables))
+                   && (_orderings.SequenceEqual(statement._orderings))
                    && (_setOperationCombinedStatements.SequenceEqual(statement.SetOperationCombinedStatements));
         }
 
-        public override int GetHashCode ()
+        public override int GetHashCode()
         {
             return EqualityUtility.GetRotatedHashCode(
                        _dataInfo,
@@ -117,7 +117,7 @@ namespace ReLinqEntropy.Query.Mapping.Statements
                    ^ EqualityUtility.GetRotatedHashCode(_setOperationCombinedStatements);
         }
 
-        public override string ToString ()
+        public override string ToString()
         {
             // TODO: Add sql statement builder
             throw new NotImplementedException();

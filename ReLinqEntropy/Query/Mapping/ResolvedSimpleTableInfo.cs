@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Remotion.Linq;
+using System;
 using System.Linq.Expressions;
-using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -18,7 +18,7 @@ namespace ReLinqEntropy.Query.Mapping
         }
 
         public Type ItemType => _itemType;
-        
+
         public IResolvedTableInfo GetResolvedTableInfo() => this;
 
         public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)

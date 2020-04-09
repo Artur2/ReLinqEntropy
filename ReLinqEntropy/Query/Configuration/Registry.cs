@@ -59,13 +59,12 @@ namespace ReLinqEntropy.Query.Configuration
             return _items.ContainsKey(key);
         }
 
-        internal protected virtual TItem GetItemExact(TKey key)
+        protected internal virtual TItem GetItemExact(TKey key)
         {
-            TItem item;
-            _items.TryGetValue(key, out item);
+            _items.TryGetValue(key, out TItem item);
             return item;
         }
 
-        internal protected abstract void RegisterForTypes(IEnumerable<Type> itemTypes);
+        protected internal abstract void RegisterForTypes(IEnumerable<Type> itemTypes);
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReLinqEntropy.Query
+﻿namespace ReLinqEntropy.Query
 {
     public class QueryDataProvider
     {

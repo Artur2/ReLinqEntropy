@@ -1,5 +1,5 @@
-﻿using System;
-using ReLinqEntropy.Query.Mapping;
+﻿using ReLinqEntropy.Query.Mapping;
+using System;
 using Xunit;
 
 namespace ReLinqEntropy.Tests.Query.Mapping

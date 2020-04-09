@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Remotion.Linq;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Remotion.Linq;
 
 namespace ReLinqEntropy.Query
 {

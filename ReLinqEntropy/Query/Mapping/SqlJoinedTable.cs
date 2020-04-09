@@ -45,6 +45,6 @@ namespace ReLinqEntropy.Query.Mapping
 
         public override string ToString() =>
 
-        JoinSemantics.ToString ().ToUpper () + " JOIN " + JoinInfo + JoinedTables.Aggregate ("", (s, t) => s + " " + t);
+        JoinSemantics.ToString().ToUpper() + " JOIN " + JoinInfo + JoinedTables.Aggregate("", (s, t) => s + " " + t);
     }
 }

@@ -1,5 +1,5 @@
-﻿using System.Linq.Expressions;
-using ReLinqEntropy.Query.Mapping.Statements;
+﻿using ReLinqEntropy.Query.Mapping.Statements;
+using System.Linq.Expressions;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -7,7 +7,7 @@ namespace ReLinqEntropy.Query.Expressions
     {
         private readonly SqlStatement _sqlStatement;
 
-        public SqlSubStatementExpression (SqlStatement sqlStatement)
+        public SqlSubStatementExpression(SqlStatement sqlStatement)
         {
             _sqlStatement = sqlStatement;
         }
