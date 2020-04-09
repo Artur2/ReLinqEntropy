@@ -43,8 +43,7 @@ namespace ReLinqEntropy.Query.Mapping
             return tableInfoVisitor.VisitSqlJoinedTable(this);
         }
 
-        public override string ToString() =>
-
-        JoinSemantics.ToString().ToUpper() + " JOIN " + JoinInfo + JoinedTables.Aggregate("", (s, t) => s + " " + t);
+        public override string ToString()
+            => JoinSemantics.ToString().ToUpper() + " JOIN " + JoinInfo + JoinedTables.Aggregate("", (s, t) => s + " " + t);
     }
 }
