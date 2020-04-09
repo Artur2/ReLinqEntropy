@@ -3,6 +3,7 @@
     public interface ITableInfoVisitor
     {
         ITableInfo VisitUnresolvedTableInfo(UnresolvedTableInfo tableInfo);
+
         ITableInfo VisitUnresolvedGroupReferenceTableInfo(UnresolvedGroupReferenceTableInfo tableInfo);
 
         ITableInfo VisitSqlJoinedTable(SqlJoinedTable joinedTable);
