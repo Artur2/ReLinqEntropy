@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReLinqEntropy.Query.Mapping.Visitors;
+using System;
 using System.Linq.Expressions;
 
 namespace ReLinqEntropy.Query.Expressions
@@ -35,6 +36,25 @@ namespace ReLinqEntropy.Query.Expressions
             _value = value;
         }
 
-        // TODO: Need to end
+        public override ExpressionType NodeType => ExpressionType.Extension;
+
+        public override Type Type => _type;
+
+        public object Value => _value;
+
+        protected override Expression VisitChildren(ExpressionVisitor expressionVisitor) => this;
+
+        protected override Expression Accept(ExpressionVisitor expressionVisitor)
+        {
+            if (expressionVisitor is ISqlSpecificExpressionVisitor specificExpressionVisitor && specificExpressionVisitor != null)
+            {
+                return specificExpressionVisitor.VisitSqlLiteral(this);
+            }
+
+            return base.Accept(expressionVisitor);
+        }
+
+        public override string ToString()
+            => Value is string ? "\"" + Value + "\"" : Value.ToString();
     }
 }
