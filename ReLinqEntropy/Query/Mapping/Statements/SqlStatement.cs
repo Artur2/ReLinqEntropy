@@ -46,6 +46,7 @@ namespace ReLinqEntropy.Query.Mapping.Statements
             _sqlTables = sqlTables.ToArray();
             _orderings = orderings.ToArray();
             _whereCondition = whereCondition;
+            _groupByExpression = groupCondition;
             _topExpression = topExpression;
             _isDistinctQuery = isDistinctQuery;
             _rowNumberSelector = rowNumberSelector;
@@ -119,8 +120,8 @@ namespace ReLinqEntropy.Query.Mapping.Statements
 
         public override string ToString()
         {
-            // TODO: Add sql statement builder
-            throw new NotImplementedException();
+            var statementBuilder = new SqlStatementBuilder(this);
+            return statementBuilder.ToString();
         }
     }
 }

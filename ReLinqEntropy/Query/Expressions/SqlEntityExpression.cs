@@ -22,6 +22,7 @@ namespace ReLinqEntropy.Query.Expressions
             _entityType = entityType;
             _tableAlias = tableAlias;
             _name = name;
+            _identityExpressionGenerator = identityExpressionGenerator;
         }
 
         public abstract ReadOnlyCollection<SqlColumnExpression> Columns { get; }

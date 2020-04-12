@@ -33,6 +33,7 @@ namespace ReLinqEntropy.Query.Expressions
 
             _type = type;
             _cases = Array.AsReadOnly(casesArray);
+            _elseCase = elseCase;
         }
 
         public override ExpressionType NodeType => ExpressionType.Extension;
