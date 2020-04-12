@@ -1,6 +1,8 @@
 ﻿namespace ReLinqEntropy.Query.Mapping.Statements
 {
-    public class SetOperation
+    public enum SetOperation
     {
+        Union,
+        UnionAll
     }
 }
