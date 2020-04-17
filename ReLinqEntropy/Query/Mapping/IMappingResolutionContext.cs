@@ -19,7 +19,7 @@ namespace ReLinqEntropy.Query.Mapping
         SqlEntityExpression UpdateEntityAndAddMapping(SqlEntityExpression entityExpression, Type itemType, string tableAlias, string newName);
 
         SqlGroupingSelectExpression UpdateGroupingSelectAndAddMapping(
-        SqlGroupingSelectExpression expression, Expression newKey, Expression newElement, IEnumerable<Expression> aggregations);
+            SqlGroupingSelectExpression expression, Expression newKey, Expression newElement, IEnumerable<Expression> aggregations);
 
         void AddSqlTable(SqlTable sqlTable, SqlStatementBuilder sqlStatementBuilder);
 

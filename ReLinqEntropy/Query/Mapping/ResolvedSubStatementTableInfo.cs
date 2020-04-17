@@ -32,7 +32,8 @@ namespace ReLinqEntropy.Query.Mapping
         public Expression ResolveReference(SqlTable sqlTable, IMappingResolver mappingResolver,
             IMappingResolutionContext mappingResolutionContext, UniqueIdentifierGenerator uniqueIdentifierGenerator)
         {
-            throw new NotImplementedException();
+            var selectProjection = SqlStatement.SelectProjection;
+            return SubStatementReferenceResolver
         }
 
         public override string ToString() => $"({SqlStatement}) [{TableAlias}]";
