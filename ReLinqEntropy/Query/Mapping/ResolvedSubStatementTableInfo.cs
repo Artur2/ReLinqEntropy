@@ -24,16 +24,13 @@ namespace ReLinqEntropy.Query.Mapping
 
         public IResolvedTableInfo GetResolvedTableInfo() => this;
 
-        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)
-        {
-            return tableInfoVisitor.VisitSubStatementTableInfo(this);
-        }
+        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor) => tableInfoVisitor.VisitSubStatementTableInfo(this);
 
         public Expression ResolveReference(SqlTable sqlTable, IMappingResolver mappingResolver,
             IMappingResolutionContext mappingResolutionContext, UniqueIdentifierGenerator uniqueIdentifierGenerator)
         {
             var selectProjection = SqlStatement.SelectProjection;
-            return SubStatementReferenceResolver
+            return SubStatementReferenceResolver.ResolveSubStatementReferenceExpression(selectProjection, this, sqlTable, mappingResolutionContext);
         }
 
         public override string ToString() => $"({SqlStatement}) [{TableAlias}]";
