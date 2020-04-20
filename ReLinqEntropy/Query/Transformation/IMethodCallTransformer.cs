@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ReLinqEntropy.Query.Transformation
 {
-    public interface IMethodCallTransformerProvider
+    public interface IMethodCallTransformer
     {
-        IMethodCallTransformer GetTransformer(MethodCallExpression methodCallExpression);
+        Expression Transform(MethodCallExpression methodCallExpression);
     }
 }

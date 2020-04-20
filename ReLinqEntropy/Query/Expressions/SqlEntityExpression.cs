@@ -41,7 +41,6 @@ namespace ReLinqEntropy.Query.Expressions
 
         public abstract SqlEntityExpression CreateReference(string newTableAlias, Type newType);
 
-        // TODO: Need remove ItemType parameter
         public abstract SqlEntityExpression Update(Type itemType, string tableAlias, string entityName);
 
         public Expression GetIdentityExpression()

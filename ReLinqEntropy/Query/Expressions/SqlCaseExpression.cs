@@ -14,6 +14,16 @@ namespace ReLinqEntropy.Query.Expressions
         private readonly ReadOnlyCollection<CaseWhenPair> _cases;
         private readonly Expression _elseCase;
 
+        public static SqlCaseExpression CreateIfThenElse(Type type, Expression test, Expression thenCase, Expression elseCase)
+        { 
+            return new SqlCaseExpression(type, new[] { new CaseWhenPair(test, thenCase) }, elseCase);
+        }
+
+        public static SqlCaseExpression CreateIfThenElseNull(Type type, Expression test, Expression trueCase, Expression falseCase)
+        {
+            return new SqlCaseExpression(type, new[] { new CaseWhenPair(test, trueCase), new CaseWhenPair(Not(test), falseCase) }, Constant(null, type));
+        }
+
         public SqlCaseExpression(Type type, IEnumerable<CaseWhenPair> cases, Expression elseCase)
         {
             if (elseCase == null && type.IsValueType && Nullable.GetUnderlyingType(type) == null)
