@@ -7,10 +7,7 @@ namespace ReLinqEntropy.Query.Mapping
     {
         private IJoinInfo _joinInfo;
 
-        public SqlJoinedTable(IJoinInfo joinInfo, JoinSemantics joinSemantics) : base(joinInfo.ItemType, joinSemantics)
-        {
-            _joinInfo = joinInfo;
-        }
+        public SqlJoinedTable(IJoinInfo joinInfo, JoinSemantics joinSemantics) : base(joinInfo.ItemType, joinSemantics) => _joinInfo = joinInfo;
 
         public IJoinInfo JoinInfo
         {
@@ -31,17 +28,11 @@ namespace ReLinqEntropy.Query.Mapping
             }
         }
 
-        public override void Accept(ISqlTableVisitor visitor)
-        {
-            visitor.VisitSqlJoinedTable(this);
-        }
+        public override void Accept(ISqlTableVisitor visitor) => visitor.VisitSqlJoinedTable(this);
 
         public override IResolvedTableInfo GetResolvedTableInfo() => JoinInfo.GetResolvedJoinInfo().ForeignTableInfo;
 
-        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)
-        {
-            return tableInfoVisitor.VisitSqlJoinedTable(this);
-        }
+        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor) => tableInfoVisitor.VisitSqlJoinedTable(this);
 
         public override string ToString()
             => JoinSemantics.ToString().ToUpper() + " JOIN " + JoinInfo + JoinedTables.Aggregate("", (s, t) => s + " " + t);

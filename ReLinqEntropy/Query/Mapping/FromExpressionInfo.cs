@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
-using System.Text;
 using Remotion.Linq.Clauses;
 
 namespace ReLinqEntropy.Query.Mapping

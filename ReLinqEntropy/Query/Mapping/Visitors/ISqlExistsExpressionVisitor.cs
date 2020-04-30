@@ -3,8 +3,8 @@ using ReLinqEntropy.Query.Expressions;
 
 namespace ReLinqEntropy.Query.Mapping.Visitors
 {
-    public interface INamedExpressionVisitor
+    public interface ISqlExistsExpressionVisitor
     {
-        Expression VisitNamed(NamedExpression expression);
+        Expression VisitSqlExists(SqlExistsExpression sqlExistsExpression);
     }
 }

@@ -4,33 +4,24 @@ using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Expressions
 {
-    public class SqlLengthExpression : Expression
+    public class SqlExistsExpression : Expression
     {
         private readonly Expression _expression;
 
-        public SqlLengthExpression(Expression expression)
-        {
-            if (expression.Type != typeof(string) && expression.Type != typeof(char))
-            {
-                throw new ArgumentException("Allowed only string or char type", nameof(expression));
-            }
-
-            _expression = expression;
-        }
+        public SqlExistsExpression(Expression expression) => _expression = expression;
 
         public override ExpressionType NodeType => ExpressionType.Extension;
 
-        public override Type Type => typeof(int);
+        public override Type Type => typeof(bool);
 
         public Expression Expression => _expression;
 
         protected override Expression VisitChildren(ExpressionVisitor expressionVisitor)
         {
             var newExpression = expressionVisitor.Visit(_expression);
-
             if (newExpression != _expression)
             {
-                return new SqlLengthExpression(newExpression);
+                return new SqlExistsExpression(newExpression);
             }
 
             return this;
@@ -38,14 +29,15 @@ namespace ReLinqEntropy.Query.Expressions
 
         protected override Expression Accept(ExpressionVisitor expressionVisitor)
         {
-            if (expressionVisitor is ISqlSpecificExpressionVisitor specificExpressionVisitor && specificExpressionVisitor != null)
+            if (expressionVisitor is ISqlExistsExpressionVisitor sqlExistsExpressionVisitor && sqlExistsExpressionVisitor != null)
             {
-                return specificExpressionVisitor.VisitSqlLength(this);
+                return sqlExistsExpressionVisitor.VisitSqlExists(this);
             }
 
             return base.Accept(expressionVisitor);
         }
 
-        public override string ToString() => $"LEN({_expression})";
+        public override string ToString() => $"EXISTS({_expression})";
     }
+
 }

@@ -1,5 +1,5 @@
-﻿using ReLinqEntropy.Query.Expressions;
-using System;
+﻿using System;
+using ReLinqEntropy.Query.Expressions;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -8,10 +8,7 @@ namespace ReLinqEntropy.Query.Mapping
         private readonly SqlTable _referencedGroupSource;
         private readonly Type _itemType;
 
-        public UnresolvedGroupReferenceTableInfo(SqlTable referencedGroupSource)
-        {
-            _referencedGroupSource = referencedGroupSource;
-        }
+        public UnresolvedGroupReferenceTableInfo(SqlTable referencedGroupSource) => _referencedGroupSource = referencedGroupSource;
 
         public Type ItemType => _itemType;
 

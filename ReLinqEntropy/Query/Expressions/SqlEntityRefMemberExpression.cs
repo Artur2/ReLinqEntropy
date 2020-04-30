@@ -1,9 +1,9 @@
-﻿using ReLinqEntropy.Internal;
-using ReLinqEntropy.Query.Expressions;
-using ReLinqEntropy.Query.Mapping.Visitors;
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using ReLinqEntropy.Internal;
+using ReLinqEntropy.Query.Expressions;
+using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Mapping
 {

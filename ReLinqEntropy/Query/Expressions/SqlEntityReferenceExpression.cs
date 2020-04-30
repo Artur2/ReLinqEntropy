@@ -1,8 +1,8 @@
-﻿using ReLinqEntropy.Query.Mapping;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping;
 
 namespace ReLinqEntropy.Query.Expressions
 {

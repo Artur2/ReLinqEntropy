@@ -1,16 +1,16 @@
-﻿using ReLinqEntropy.Query.Expressions;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using ReLinqEntropy.Query.Expressions;
 using ReLinqEntropy.Query.Mapping.Contexts;
 using ReLinqEntropy.Query.Mapping.Statements;
 using ReLinqEntropy.Query.Transformation;
 using Remotion.Linq.Clauses;
 using Remotion.Linq.Clauses.Expressions;
 using Remotion.Linq.Parsing;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 
 namespace ReLinqEntropy.Query.Mapping.Visitors.Preparation
 {
@@ -201,15 +201,9 @@ namespace ReLinqEntropy.Query.Mapping.Visitors.Preparation
             return Expression.Call(namedInstance, expression.Method, namedArguments);
         }
 
-        protected override Expression VisitConditional(ConditionalExpression expression)
-        {
-            return SqlCaseExpression.CreateIfThenElse(expression.Type, Visit(expression.Test), Visit(expression.IfTrue), Visit(expression.IfFalse));
-        }
+        protected override Expression VisitConditional(ConditionalExpression expression) => SqlCaseExpression.CreateIfThenElse(expression.Type, Visit(expression.Test), Visit(expression.IfTrue), Visit(expression.IfFalse));
 
-        protected override Expression VisitNew(NewExpression expression)
-        {
-            return NamedExpression.CreateNewExpressionWithNamedArguments(expression, expression.Arguments.Select(Visit));
-        }
+        protected override Expression VisitNew(NewExpression expression) => NamedExpression.CreateNewExpressionWithNamedArguments(expression, expression.Arguments.Select(Visit));
 
         protected override Expression VisitConstant(ConstantExpression expression)
         {
@@ -222,10 +216,7 @@ namespace ReLinqEntropy.Query.Mapping.Visitors.Preparation
             return base.VisitConstant(expression);
         }
 
-        public Expression VisitPartialEvaluationException(PartialEvaluationExceptionExpression partialEvaluationExceptionExpression)
-        {
-            return Visit(partialEvaluationExceptionExpression.EvaluatedExpression);
-        }
+        public Expression VisitPartialEvaluationException(PartialEvaluationExceptionExpression partialEvaluationExceptionExpression) => Visit(partialEvaluationExceptionExpression.EvaluatedExpression);
 
         private bool IsNullConstant(Expression expression)
         {

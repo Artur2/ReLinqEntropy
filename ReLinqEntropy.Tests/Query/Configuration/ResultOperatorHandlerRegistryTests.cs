@@ -1,6 +1,6 @@
-﻿using ReLinqEntropy.Query.Configuration;
+﻿using System;
+using ReLinqEntropy.Query.Configuration;
 using ReLinqEntropy.Query.Operator;
-using System;
 using Xunit;
 
 namespace ReLinqEntropy.Tests.Query.Configuration

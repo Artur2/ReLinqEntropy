@@ -8,10 +8,7 @@ namespace ReLinqEntropy.Query.Mapping
         private ITableInfo _tableInfo;
 
         public SqlTableConcrete(ITableInfo tableInfo, JoinSemantics joinSemantics) : base(tableInfo.ItemType,
-            joinSemantics)
-        {
-            _tableInfo = tableInfo;
-        }
+            joinSemantics) => _tableInfo = tableInfo;
 
         public ITableInfo TableInfo
         {
@@ -34,10 +31,7 @@ namespace ReLinqEntropy.Query.Mapping
 
         public override IResolvedTableInfo GetResolvedTableInfo() => TableInfo.GetResolvedTableInfo();
 
-        public override void Accept(ISqlTableVisitor visitor)
-        {
-            visitor.VisitSqlTable(this);
-        }
+        public override void Accept(ISqlTableVisitor visitor) => visitor.VisitSqlTable(this);
 
         public override string ToString() => TableInfo + JoinedTables.Aggregate(string.Empty, (s, t) => s + " " + t);
     }

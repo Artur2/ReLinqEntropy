@@ -1,5 +1,5 @@
-﻿using Remotion.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {

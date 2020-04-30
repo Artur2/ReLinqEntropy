@@ -1,8 +1,8 @@
-﻿using ReLinqEntropy.Query.Mapping;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -16,10 +16,7 @@ namespace ReLinqEntropy.Query.Expressions
             string entityName,
             Func<SqlEntityExpression, Expression> identityExpressionGenerator,
             params SqlColumnExpression[] projectionColumns) : base(entityType, tableAlias, entityName,
-            identityExpressionGenerator)
-        {
-            _columns = Array.AsReadOnly(projectionColumns);
-        }
+            identityExpressionGenerator) => _columns = Array.AsReadOnly(projectionColumns);
 
         public override ReadOnlyCollection<SqlColumnExpression> Columns => _columns;
 

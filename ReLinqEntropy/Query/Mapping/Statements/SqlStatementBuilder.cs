@@ -1,10 +1,10 @@
-﻿using Remotion.Linq.Clauses;
-using Remotion.Linq.Clauses.StreamedData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Remotion.Linq.Clauses;
+using Remotion.Linq.Clauses.StreamedData;
 
 namespace ReLinqEntropy.Query.Mapping.Statements
 {
@@ -32,10 +32,7 @@ namespace ReLinqEntropy.Query.Mapping.Statements
 
         public List<SetOperationCombinedStatement> SetOperationCombinedStatements { get; set; }
 
-        public SqlStatementBuilder()
-        {
-            Reset();
-        }
+        public SqlStatementBuilder() => Reset();
 
         public SqlStatementBuilder(SqlStatement sqlStatement)
         {

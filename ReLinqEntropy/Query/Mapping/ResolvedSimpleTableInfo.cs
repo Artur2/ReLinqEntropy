@@ -1,6 +1,6 @@
-﻿using Remotion.Linq;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -21,17 +21,11 @@ namespace ReLinqEntropy.Query.Mapping
 
         public IResolvedTableInfo GetResolvedTableInfo() => this;
 
-        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor)
-        {
-            throw new NotImplementedException();
-        }
+        public ITableInfo Accept(ITableInfoVisitor tableInfoVisitor) => throw new NotImplementedException();
 
         public string TableAlias => _tableAlias;
 
         public Expression ResolveReference(SqlTable sqlTable, IMappingResolver mappingResolver,
-            IMappingResolutionContext mappingResolutionContext, UniqueIdentifierGenerator uniqueIdentifierGenerator)
-        {
-            throw new NotImplementedException();
-        }
+            IMappingResolutionContext mappingResolutionContext, UniqueIdentifierGenerator uniqueIdentifierGenerator) => throw new NotImplementedException();
     }
 }

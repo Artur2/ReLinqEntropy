@@ -1,6 +1,6 @@
-﻿using ReLinqEntropy.Query.Operator;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ReLinqEntropy.Query.Operator;
 
 namespace ReLinqEntropy.Query.Configuration
 {

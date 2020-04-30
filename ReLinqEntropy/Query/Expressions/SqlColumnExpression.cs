@@ -1,6 +1,6 @@
-﻿using ReLinqEntropy.Query.Mapping.Visitors;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -32,10 +32,7 @@ namespace ReLinqEntropy.Query.Mapping
         public abstract SqlColumnExpression Update(Type type, string tableAlias, string columnName,
             bool isPrimaryKey);
 
-        protected override Expression VisitChildren(ExpressionVisitor visitor)
-        {
-            return this;
-        }
+        protected override Expression VisitChildren(ExpressionVisitor visitor) => this;
 
         protected override Expression Accept(ExpressionVisitor visitor)
         {

@@ -54,10 +54,7 @@ namespace ReLinqEntropy.Query.Configuration
 
         public abstract TItem GetItem(TKey key);
 
-        public virtual bool IsRegistered(TKey key)
-        {
-            return _items.ContainsKey(key);
-        }
+        public virtual bool IsRegistered(TKey key) => _items.ContainsKey(key);
 
         protected internal virtual TItem GetItemExact(TKey key)
         {

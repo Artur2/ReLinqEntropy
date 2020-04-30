@@ -20,10 +20,7 @@ namespace ReLinqEntropy.Query.Mapping
 
         public Type ItemType => _foreignTableInfo.ItemType;
 
-        public IJoinInfo Accept(IJoinInfoVisitor joinInfoVisitor)
-        {
-            throw new NotImplementedException();
-        }
+        public IJoinInfo Accept(IJoinInfoVisitor joinInfoVisitor) => throw new NotImplementedException();
 
         public ResolvedJoinInfo GetResolvedJoinInfo() => this;
 

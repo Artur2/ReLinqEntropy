@@ -1,8 +1,8 @@
-﻿using ReLinqEntropy.Query.Mapping;
-using ReLinqEntropy.Query.Mapping.Visitors;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping;
+using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -43,10 +43,7 @@ namespace ReLinqEntropy.Query.Expressions
 
         public abstract SqlEntityExpression Update(Type itemType, string tableAlias, string entityName);
 
-        public Expression GetIdentityExpression()
-        {
-            return _identityExpressionGenerator(this);
-        }
+        public Expression GetIdentityExpression() => _identityExpressionGenerator(this);
 
         protected override Expression Accept(ExpressionVisitor visitor)
         {

@@ -1,6 +1,6 @@
-﻿using ReLinqEntropy.Query.Mapping.Visitors;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Expressions
 {

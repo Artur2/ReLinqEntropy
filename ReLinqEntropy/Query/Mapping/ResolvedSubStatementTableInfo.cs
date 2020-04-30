@@ -1,7 +1,7 @@
-﻿using ReLinqEntropy.Query.Mapping.Statements;
-using Remotion.Linq;
-using System;
+﻿using System;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping.Statements;
+using Remotion.Linq;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -11,10 +11,7 @@ namespace ReLinqEntropy.Query.Mapping
         private readonly string _tableAlias;
         private readonly SqlStatement _sqlStatement;
 
-        public ResolvedSubStatementTableInfo(string tableAlias, SqlStatement sqlStatement)
-        {
-            _tableAlias = tableAlias;
-        }
+        public ResolvedSubStatementTableInfo(string tableAlias, SqlStatement sqlStatement) => _tableAlias = tableAlias;
 
         public SqlStatement SqlStatement => _sqlStatement;
 

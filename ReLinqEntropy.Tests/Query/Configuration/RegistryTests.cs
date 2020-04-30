@@ -1,6 +1,6 @@
-﻿using ReLinqEntropy.Query.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ReLinqEntropy.Query.Configuration;
 using Xunit;
 
 namespace ReLinqEntropy.Tests.Query.Configuration
@@ -84,10 +84,7 @@ namespace ReLinqEntropy.Tests.Query.Configuration
         {
             public override string GetItem(string key) => throw new NotImplementedException();
 
-            protected internal override void RegisterForTypes(IEnumerable<Type> itemTypes)
-            {
-                throw new NotImplementedException();
-            }
+            protected internal override void RegisterForTypes(IEnumerable<Type> itemTypes) => throw new NotImplementedException();
         }
     }
 }

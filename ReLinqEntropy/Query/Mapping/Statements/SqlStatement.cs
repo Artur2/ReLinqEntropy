@@ -1,11 +1,11 @@
-﻿using ReLinqEntropy.Internal;
-using ReLinqEntropy.Query.Expressions;
-using Remotion.Linq.Clauses;
-using Remotion.Linq.Clauses.StreamedData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Internal;
+using ReLinqEntropy.Query.Expressions;
+using Remotion.Linq.Clauses;
+using Remotion.Linq.Clauses.StreamedData;
 
 namespace ReLinqEntropy.Query.Mapping.Statements
 {
@@ -102,9 +102,7 @@ namespace ReLinqEntropy.Query.Mapping.Statements
                    && (_setOperationCombinedStatements.SequenceEqual(statement.SetOperationCombinedStatements));
         }
 
-        public override int GetHashCode()
-        {
-            return EqualityUtility.GetRotatedHashCode(
+        public override int GetHashCode() => EqualityUtility.GetRotatedHashCode(
                        _dataInfo,
                        _selectProjection,
                        _whereCondition,
@@ -116,7 +114,6 @@ namespace ReLinqEntropy.Query.Mapping.Statements
                    ^ EqualityUtility.GetRotatedHashCode(_sqlTables)
                    ^ EqualityUtility.GetRotatedHashCode(_orderings)
                    ^ EqualityUtility.GetRotatedHashCode(_setOperationCombinedStatements);
-        }
 
         public override string ToString()
         {

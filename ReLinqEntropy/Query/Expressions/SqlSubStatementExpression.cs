@@ -1,10 +1,10 @@
-﻿using ReLinqEntropy.Query.Mapping;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping;
 using ReLinqEntropy.Query.Mapping.Statements;
 using ReLinqEntropy.Query.Mapping.Visitors;
 using Remotion.Linq.Clauses.StreamedData;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -12,10 +12,7 @@ namespace ReLinqEntropy.Query.Expressions
     {
         private readonly SqlStatement _sqlStatement;
 
-        public SqlSubStatementExpression(SqlStatement sqlStatement)
-        {
-            _sqlStatement = sqlStatement;
-        }
+        public SqlSubStatementExpression(SqlStatement sqlStatement) => _sqlStatement = sqlStatement;
 
         public override ExpressionType NodeType => ExpressionType.Extension;
 

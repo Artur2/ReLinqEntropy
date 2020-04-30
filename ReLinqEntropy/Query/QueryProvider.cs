@@ -1,6 +1,6 @@
-﻿using Remotion.Linq;
+﻿using System.Linq;
+using Remotion.Linq;
 using Remotion.Linq.Parsing.Structure;
-using System.Linq;
 
 namespace ReLinqEntropy.Query
 {

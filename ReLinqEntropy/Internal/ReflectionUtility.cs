@@ -1,6 +1,6 @@
-﻿using Remotion.Linq.Utilities;
-using System;
+﻿using System;
 using System.Reflection;
+using Remotion.Linq.Utilities;
 
 namespace ReLinqEntropy.Internal
 {

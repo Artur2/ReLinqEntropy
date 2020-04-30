@@ -1,5 +1,5 @@
-﻿using ReLinqEntropy.Query.Mapping;
-using System;
+﻿using System;
+using ReLinqEntropy.Query.Mapping;
 using Xunit;
 
 namespace ReLinqEntropy.Tests.Query.Mapping
@@ -55,15 +55,9 @@ namespace ReLinqEntropy.Tests.Query.Mapping
             {
             }
 
-            public override IResolvedTableInfo GetResolvedTableInfo()
-            {
-                throw new NotImplementedException();
-            }
+            public override IResolvedTableInfo GetResolvedTableInfo() => throw new NotImplementedException();
 
-            public override void Accept(ISqlTableVisitor visitor)
-            {
-                throw new NotImplementedException();
-            }
+            public override void Accept(ISqlTableVisitor visitor) => throw new NotImplementedException();
         }
     }
 }

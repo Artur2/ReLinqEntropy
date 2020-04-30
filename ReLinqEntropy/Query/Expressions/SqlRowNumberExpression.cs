@@ -1,9 +1,9 @@
-﻿using ReLinqEntropy.Query.Mapping.Visitors;
-using Remotion.Linq.Clauses;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Mapping.Visitors;
+using Remotion.Linq.Clauses;
 
 namespace ReLinqEntropy.Query.Expressions
 {
@@ -11,10 +11,7 @@ namespace ReLinqEntropy.Query.Expressions
     {
         private readonly ReadOnlyCollection<Ordering> _orderings;
 
-        public SqlRowNumberExpression(Ordering[] orderings)
-        {
-            _orderings = Array.AsReadOnly(orderings);
-        }
+        public SqlRowNumberExpression(Ordering[] orderings) => _orderings = Array.AsReadOnly(orderings);
 
         public override ExpressionType NodeType => ExpressionType.Extension;
 

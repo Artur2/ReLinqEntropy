@@ -6,15 +6,12 @@ namespace ReLinqEntropy.Internal
     /// <summary>
     /// Provides methods for determining equality and hash codes.
     /// </summary>
-    static partial class EqualityUtility
+    internal static partial class EqualityUtility
     {
         /// <summary>
         /// Gets an object's hash code or null, if the object is <see langword="null"/>.
         /// </summary>
-        public static int SafeGetHashCode<T>(T obj)
-        {
-            return (obj == null) ? 0 : obj.GetHashCode();
-        }
+        public static int SafeGetHashCode<T>(T obj) => (obj == null) ? 0 : obj.GetHashCode();
 
         /// <summary>
         ///   Gets the hash code of the individual arguments, XOR'd with bits rotated.
@@ -211,10 +208,7 @@ namespace ReLinqEntropy.Internal
         }
 
         public static bool NotNullAndSameType<T>(T a, T b)
-            where T : class, IEquatable<T>
-        {
-            return (b != null) && a.GetType() == b.GetType();
-        }
+            where T : class, IEquatable<T> => (b != null) && a.GetType() == b.GetType();
 
         /// <summary>
         /// Returns whether two objects are equal.

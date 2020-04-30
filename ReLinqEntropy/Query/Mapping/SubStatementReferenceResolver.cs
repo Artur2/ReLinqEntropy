@@ -1,9 +1,9 @@
-﻿using ReLinqEntropy.Query.Expressions;
-using ReLinqEntropy.Query.Mapping.Visitors;
-using Remotion.Linq.Parsing;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using ReLinqEntropy.Query.Expressions;
+using ReLinqEntropy.Query.Mapping.Visitors;
+using Remotion.Linq.Parsing;
 
 namespace ReLinqEntropy.Query.Mapping
 {
@@ -66,15 +66,9 @@ namespace ReLinqEntropy.Query.Mapping
             return newGroupingExpression;
         }
 
-        Expression IResolvedSqlExpressionVisitor.VisitSqlColumn(SqlColumnExpression expression)
-        {
-            throw new InvalidOperationException("SqlColumnExpression is not valid at this point. (Must be wrapped within a NamedExpression.)");
-        }
+        Expression IResolvedSqlExpressionVisitor.VisitSqlColumn(SqlColumnExpression expression) => throw new InvalidOperationException("SqlColumnExpression is not valid at this point. (Must be wrapped within a NamedExpression.)");
 
-        Expression IResolvedSqlExpressionVisitor.VisitSqlEntityConstant(SqlEntityConstantExpression expression)
-        {
-            throw new InvalidOperationException("SqlEntityConstantExpression is not valid at this point. (Must be wrapped within a NamedExpression.)");
-        }
+        Expression IResolvedSqlExpressionVisitor.VisitSqlEntityConstant(SqlEntityConstantExpression expression) => throw new InvalidOperationException("SqlEntityConstantExpression is not valid at this point. (Must be wrapped within a NamedExpression.)");
 
         private Expression ResolveChildExpression(Expression childExpression)
             => ResolveSubStatementReferenceExpression(childExpression, _tableInfo, _sqlTable, _context);

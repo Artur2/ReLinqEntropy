@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using ReLinqEntropy.Query.Mapping.Visitors;
 
 namespace ReLinqEntropy.Query.Expressions
@@ -10,10 +8,7 @@ namespace ReLinqEntropy.Query.Expressions
     {
         private readonly Expression _expression;
 
-        public SqlIsNotNullExpression(Expression expression)
-        {
-            _expression = expression;
-        }
+        public SqlIsNotNullExpression(Expression expression) => _expression = expression;
 
         public override ExpressionType NodeType => ExpressionType.Extension;
 
